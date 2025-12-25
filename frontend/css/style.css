@@ -17,6 +17,20 @@
     --color-danger: #F44336;
 }
 
+/* Dark Theme Variables */
+body.dark-theme {
+    --color-prune: #ECF4A0;
+    /* Swap Prune with Lemon for contrast */
+    --color-prune-dark: #f2f8c0;
+    --color-bluah: #1A0211;
+    /* Very dark burgundy */
+    --color-text: #ECF4A0;
+    --color-white: #1A0211;
+    --color-glass: rgba(0, 0, 0, 0.4);
+    --color-glass-border: rgba(236, 244, 160, 0.2);
+    --shadow-soft: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -30,6 +44,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -91,8 +106,8 @@ a {
     width: 100%;
     top: 0;
     z-index: 1000;
-    background: rgba(236, 244, 160, 0.9);
-    /* Sour Lemon semi-transparent */
+    background: var(--color-bluah);
+    opacity: 0.95;
     backdrop-filter: blur(10px);
 }
 
@@ -224,6 +239,7 @@ a {
 /* Range Slider */
 input[type=range] {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     background: transparent;
     margin: 1.5rem 0;
@@ -238,6 +254,7 @@ input[type=range]::-webkit-slider-thumb {
     cursor: pointer;
     margin-top: -10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    appearance: none;
 }
 
 input[type=range]::-webkit-slider-runnable-track {

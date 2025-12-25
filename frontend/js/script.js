@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+
+    // Theme Toggle Handler
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateToggleIcon(isDark);
+        });
+        updateToggleIcon(document.body.classList.contains('dark-theme'));
+    }
+
     // Current Page Detection
     const path = window.location.pathname;
     const page = path.split("/").pop();
@@ -9,6 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
         initPrivacyControls();
     }
 });
+
+function updateToggleIcon(isDark) {
+    const btn = document.getElementById('themeToggle');
+    if (btn) {
+        btn.innerHTML = isDark ? '🌙' : '☀️';
+    }
+}
 
 // Mock Data for Neural Signals
 function initDashboard() {
